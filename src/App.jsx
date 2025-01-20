@@ -8,15 +8,17 @@ import Main from './pages/Main'
 
 import Wishes from './pages/Wishes'
 import Login from './components/Login'
+
+import { MainLayout } from './layout/main-layout'
+import { TeaCard } from './layout/tea-card'
+import Contact from './pages/contact'
+
 // import { useEffect, useState } from 'react'
 
 // function ProtectedRoute({ children }) {
 // 	const token = localStorage.getItem('accessToken')
 // 	return token ? children : <Navigate to='/login' />
 // }
-
-import { MainLayout } from './layout/main-layout'
-import { TeaCard } from './layout/tea-card'
 
 function App() {
 	// const navigate = useNavigate()
@@ -56,6 +58,7 @@ function App() {
 				<Route path='/about' element={<About />} />
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
+				<Route path='/contact' element={<Contact/>} />
 				<Route path='/wishes' element={<Wishes />} />
 				<Route path='products/:id' element={<MainLayout />}>
 					<Route index element={<Products />} />

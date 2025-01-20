@@ -8,7 +8,7 @@ function Contact() {
 			<div className='border my-[100px] z-100 w-[500px]  p-[10px] m-auto rounded-lg'>
 				<div className='flex justify-between'>
 					<p className='text-[22px] font-serif'>Biz bilan bog'lanish</p>
-					<button className='bg-green-300 rounded-full px-[10px]'>X</button>
+					{/* <button className='bg-green-300 rounded-full px-[10px]'>X</button> */}
 				</div>
 				<p className='mb-[10px]'>
 					Mutaxassislarimizga siz uchun qulay shaklda savol bering:
@@ -42,4 +42,4 @@ function Contact() {
 	)
 }
 
-export default Contact
+export default Contact;

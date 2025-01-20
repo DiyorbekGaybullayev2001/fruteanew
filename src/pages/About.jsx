@@ -2,7 +2,7 @@
 import Home from '../components/Home'
 import img1 from '../about-imgs/about1.jpg'
 import img2 from '../about-imgs/about2.jpg'
-import Contact from './contact'
+// import Contact from './contact'
 
 function About() {
 	return (
@@ -120,7 +120,7 @@ function About() {
 				</div>
 			</div>
 			<Home />
-			<Contact/>
+			{/* <Contact/> */}
 		</div>
 	)
 }
