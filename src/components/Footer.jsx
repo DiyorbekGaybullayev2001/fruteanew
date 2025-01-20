@@ -25,18 +25,18 @@ function Footer() {
         </ul>
         <ul className="flex gap-4">
             <li>
-                <a href="https://www.instagram.com/fruteacorp/" className="icon">
-                    <IoLogoInstagram />
+                <a href="https://www.instagram.com/fruteacorp/" className="icon text-[#eb4f24dd] ">
+                    <IoLogoInstagram className="w-[30px] h-[30px]" />
                 </a>
             </li>
             <li>
-                <a href="https://www.facebook.com/fruteacorp/" className="icon">
-                    <FaTelegram />
+                <a href="https://www.facebook.com/fruteacorp/" className="icon text-[#3794ff]">
+                    <FaTelegram className="w-[30px] h-[30px]"/>
                 </a>
             </li>
             <li>
-                <a href="https://t.me/fruteacorp/" className="icon">
-                    <FaFacebook />
+                <a href="https://t.me/fruteacorp/" className="icon text-[#4c71c7]">
+                    <FaFacebook className="w-[30px] h-[30px]"/>
                 </a>
             </li>
         </ul>

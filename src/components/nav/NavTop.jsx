@@ -66,11 +66,11 @@ function NavTop() {
 
 					<div className='flex gap-[8px] items-center ml-[20px]'>
 						<a
-							href='/login'
+							href='/cabinet'
 							className=' font-medium  text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]'
 						>
 							<button className='flex items-center gap-[10px] py-[10px]'>
-								<FaRegUser /> <span className='hidden xl:block'>kirish </span>
+								<FaRegUser /> <span className='hidden xl:block'>Kabinet</span>
 							</button>
 						</a>
 						<a

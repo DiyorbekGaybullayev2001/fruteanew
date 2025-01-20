@@ -12,6 +12,7 @@ import Login from './components/Login'
 import { MainLayout } from './layout/main-layout'
 import { TeaCard } from './layout/tea-card'
 import Contact from './pages/contact'
+import Cabinet from './components/cabinet'
 
 // import { useEffect, useState } from 'react'
 
@@ -51,6 +52,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Main />} />
 				<Route path='/login' element={<Login />} />
+				<Route path="/cabinet/*" element={<Cabinet />}/>
 				<Route path='/about' element={<About />} />
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
