@@ -33,7 +33,9 @@ function My_settings() {
             readOnly
           />
         </div>
-        <button className="text-red-500 hover:underline">Tizimdan chiqish</button>
+        <a href="/login">
+          <button className="text-red-500">Tizimdan chiqish</button>
+        </a>
       </form>
     </div>
   );

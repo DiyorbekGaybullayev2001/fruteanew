@@ -5,7 +5,6 @@ import Cart from './pages/Cart'
 import Faq from './pages/Faq'
 import Products from './pages/Products'
 import Main from './pages/Main'
-
 import Wishes from './pages/Wishes'
 import Login from './components/Login'
 
@@ -21,6 +20,13 @@ import Cabinet from './components/cabinet'
 // 	return token ? children : <Navigate to='/login' />
 // }
 
+<<<<<<< HEAD
+=======
+import { MainLayout } from './layout/main-layout'
+import { TeaCard } from './layout/tea-card'
+import SingleProduct from './pages/SinglePage'
+
+>>>>>>> 7c71c6c39140c7b863cfa1b6b3cc7d83e8301755
 function App() {
 	// const navigate = useNavigate()
 	// const [token, setToken] = useState(localStorage.getItem('accessToken'))
@@ -57,6 +63,7 @@ function App() {
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
 				<Route path='/products' element={<Products />} />
+				<Route path="/product/:id" element={<SingleProduct/>}/>
 				<Route path='/about' element={<About />} />
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
