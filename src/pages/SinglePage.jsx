@@ -16,6 +16,7 @@ const SingleProduct = () => {
   const [activeTab, setActiveTab] = useState(0); // Active tab state
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!product) {
       const fetchProduct = async () => {
         try {

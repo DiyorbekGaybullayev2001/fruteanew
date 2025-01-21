@@ -12,6 +12,7 @@ import { MainLayout } from './layout/main-layout'
 import { TeaCard } from './layout/tea-card'
 import Contact from './pages/contact'
 import Cabinet from './components/cabinet'
+import SingleProduct from './pages/SinglePage'
 
 // import { useEffect, useState } from 'react'
 
@@ -20,13 +21,6 @@ import Cabinet from './components/cabinet'
 // 	return token ? children : <Navigate to='/login' />
 // }
 
-<<<<<<< HEAD
-=======
-import { MainLayout } from './layout/main-layout'
-import { TeaCard } from './layout/tea-card'
-import SingleProduct from './pages/SinglePage'
-
->>>>>>> 7c71c6c39140c7b863cfa1b6b3cc7d83e8301755
 function App() {
 	// const navigate = useNavigate()
 	// const [token, setToken] = useState(localStorage.getItem('accessToken'))
