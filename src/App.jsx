@@ -17,6 +17,7 @@ import Login from './components/Login'
 
 import { MainLayout } from './layout/main-layout'
 import { TeaCard } from './layout/tea-card'
+import Checkout from './pages/Checkout'
 
 function App() {
 	// const navigate = useNavigate()
@@ -53,9 +54,7 @@ function App() {
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
 				<Route path='/products' element={<Products />} />
-				<Route path='/about' element={<About />} />
-				<Route path='/cart' element={<Cart />} />
-				<Route path='/faq' element={<Faq />} />
+				<Route path='/checkout' element={<Checkout />} />
 				<Route path='/wishes' element={<Wishes />} />
 				<Route path='products/:id' element={<MainLayout />}>
 					<Route index element={<Products />} />

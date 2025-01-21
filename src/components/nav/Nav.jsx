@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import useStore from '../../store/teaStore'
 
 function Nav() {
 	const { setLanguage } = useStore()
+	const navigate = useNavigate()
 	const languages = [
 		{ code: 'uz', flag: '🇺🇿' },
 		{ code: 'ru', flag: '🇷🇺' },
@@ -11,6 +13,27 @@ function Nav() {
 		setLanguage(i)
 	}
 	// console.log(languagee);
+const a = async (e) => {
+	e.preventDefault();
+	try {
+	  const url = 'http://209.38.30.188:8347/auth/getme'
+  
+	  const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+		},
+	  });
+	  const result = await response.json();
+	  console.log(result);
+	  if (result === true) { // navigate to 'checkout' if result is true
+		navigate("/checkout");
+	}
+	} catch (error) {
+	  console.error('Error:', error);
+	}
+  };
 
 	return (
 		<div>
@@ -26,6 +49,7 @@ function Nav() {
 				<a href='/faq' className='py-[10px] px-[10px] border-r border-[#fff]'>
 					savol-javob
 				</a>
+				<button onClick={a}>sotvolish</button>
 				<div className='flex gap-[10px] py-[10px] pl-[10px]'>
 					{languages.map(lang => (
 						<span

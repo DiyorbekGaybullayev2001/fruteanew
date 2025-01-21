@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
 import { GiSelfLove } from 'react-icons/gi'
 
 export const ProductCard = ({images, amount, title_uz}) => {

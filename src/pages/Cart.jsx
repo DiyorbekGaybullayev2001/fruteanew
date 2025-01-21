@@ -2,12 +2,13 @@
 import { useEffect, useState } from 'react'
 import { CiTrash } from 'react-icons/ci'
 import NoData from './img/not-product-Bbj56LVh.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Nav from '../components/nav/Nav'
 import NavTop from '../components/nav/NavTop'
 function Cart() {
 	const [cartItems, setCartItems] = useState([])
 	const [loading, setLoading] = useState(true)
+	const navigation = useNavigate()
 
 	const fetchCart = async () => {
 		try {
@@ -107,6 +108,11 @@ function Cart() {
 	}, 0)
 
 	const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+
+    // Rasuljon
+	const a = () => {
+		navigation("/checkout")
+	}
 
 	return (
 		<>
@@ -225,7 +231,8 @@ function Cart() {
 								</h4>
 								<h4 className='flex text-xl text-black'>{totalSum} so'm</h4>
 							</div>
-							<button className='w-full text-white bg-[#16A24A] rounded-md p-2'>
+							{/* Rasuljon */}
+							<button onClick={a} className='w-full text-white bg-[#16A24A] rounded-md p-2'>
 								Rasmiylashtirishga o'tish
 							</button>
 						</div>

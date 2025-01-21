@@ -54,22 +54,6 @@ function MainComponent() {
 		{ label: 'User', icon: <FaRegUser />, isButton: true },
 	]
 
-	// const fetchData = () => {
-	// 	setLoading(true)
-	// 	fetch(`https://api.fruteacorp.uz/products?page=1&limit=${limit}`, {
-	// 		method: 'GET',
-	// 		headers: { 'Content-Type': 'application/json' },
-	// 	})
-	// 		.then(res => res.json())
-	// 		.then(elem => {
-	// 			setData(elem)
-	// 		})
-	// 		.catch(err => {
-	// 			console.error('Error fetching data:', err)
-	// 		})
-	// 		.finally(() => setLoading(false))
-	// }
-
 	const fetchData = () => {
 		setLoading(true)
 		fetch(`https://api.fruteacorp.uz/products?page=1&limit=${limit}`, {
@@ -136,17 +120,17 @@ function MainComponent() {
 	}, [limit])
 
 	const handleAddToCart = (productId, count) => {
-		const token = localStorage.getItem('accessToken');  // Tokenni olish
+		const token = localStorage.getItem('accessToken');  
 	  
 		fetch('https://api.fruteacorp.uz/cart/add', {
 		  method: 'POST',
 		  headers: {
 			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${token}`,  // Tokenni yuborish
+			'Authorization': `Bearer ${token}`,  
 		  },
 		  body: JSON.stringify({
-			productId: productId,  // Mahsulot ID'si
-			count: count,  // Mahsulot miqdori
+			productId: productId, 
+			count: count,  
 		  }),
 		})
 		  .then((response) => {

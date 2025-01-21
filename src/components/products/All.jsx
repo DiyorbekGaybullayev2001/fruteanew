@@ -6,13 +6,13 @@ import { BsBagPlus } from 'react-icons/bs'
 import { FaStar } from 'react-icons/fa'
 import { GiSelfLove } from 'react-icons/gi'
 import React, { useState, useEffect } from 'react'
-
+import { useNavigate } from 'react-router-dom';
 const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 	const [loading, setLoading] = useState(false)
 	const [likedProducts, setLikedProducts] = useState([]) // Liked product IDs
+	const navigate = useNavigate()
 
 	useEffect(() => {
-		// Wishlistni qayta yuklash
 		fetchWishlist
 	}, [likedProducts, fetchWishlist])
 
@@ -54,6 +54,7 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 	}
 
 	const addToCart = async productId => {
+		navigate("/checkout")
 		setLoading(true)
 		const token = localStorage.getItem('accessToken')
 		if (!token) {
@@ -70,7 +71,7 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 				},
 				body: JSON.stringify({ productId, count: 1 }),
 			})
-
+	  
 			if (!response.ok) {
 				const errorData = await response.json()
 				console.error(`Error: ${errorData.message}`)
