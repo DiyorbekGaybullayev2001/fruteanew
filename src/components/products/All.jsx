@@ -6,6 +6,7 @@ import { BsBagPlus } from 'react-icons/bs'
 import { FaStar } from 'react-icons/fa'
 import { GiSelfLove } from 'react-icons/gi'
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 	const [loading, setLoading] = useState(false)
@@ -100,11 +101,13 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 						className='max-w-[400px] relative border border-green-300 hover:shadow-[0px_0px_13px_rgba(72,239,128,0.5)] overflow-hidden rounded-[20px] flex flex-col pb-4'
 					>
 						<div className='relative bg-[#EFEFEF]'>
+							<Link to={`/product/${product.id}`}>
 							<img
 								src={imageUrl}
 								alt={getLocalizedTitle(product)}
 								className='w-full max-h-[200px] block object-contain rounded mb-2 sm:max-h-[350px]'
 							/>
+							</Link>
 							<button
 								className='absolute right-1 text-xl sm:text-2xl sm:right-3 top-4'
 								onClick={() => handleClick(product.id, 'love')}

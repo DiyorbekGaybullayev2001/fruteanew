@@ -5,7 +5,6 @@ import Cart from './pages/Cart'
 import Faq from './pages/Faq'
 import Products from './pages/Products'
 import Main from './pages/Main'
-
 import Wishes from './pages/Wishes'
 import Login from './components/Login'
 // import { useEffect, useState } from 'react'
@@ -17,6 +16,7 @@ import Login from './components/Login'
 
 import { MainLayout } from './layout/main-layout'
 import { TeaCard } from './layout/tea-card'
+import SingleProduct from './pages/SinglePage'
 
 function App() {
 	// const navigate = useNavigate()
@@ -53,6 +53,7 @@ function App() {
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
 				<Route path='/products' element={<Products />} />
+				<Route path="/product/:id" element={<SingleProduct/>}/>
 				<Route path='/about' element={<About />} />
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/faq' element={<Faq />} />
