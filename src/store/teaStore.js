@@ -1,15 +1,36 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-const useStore = create(set => ({
-	isSidebarActive: true,
-	toggleSidebar: () =>
-		set(state => ({ isSidebarActive: !state.isSidebarActive })),
+const useStore = create((set) => ({
+  isSidebarActive: true,
+  toggleSidebar: () => set((state) => ({ isSidebarActive: !state.isSidebarActive })),
 
-	user: null,
-	setUser: user => set({ user }),
+ user: JSON.parse(localStorage.getItem('user')) || null,
+ setUser: newUser => {
+  set({ user: newUser })
+  localStorage.setItem('user', JSON.stringify(newUser))
+ },
 
-	languagee: 'uz',
-	setLanguage: i => set({ languagee: i }),
-}))
+  language: 'uz', 
+  setLanguage: (lang) => set({ language: lang }),
+}));
 
-export default useStore
+export default useStore;
+
+
+
+
+// import { create } from 'zustand'
+
+// const useStore = create(set => ({
+// 	isSidebarActive: true,
+// 	toggleSidebar: () =>
+// 		set(state => ({ isSidebarActive: !state.isSidebarActive })),
+
+// 	user: null,
+// 	setUser: user => set({ user }),
+
+// 	languagee: 'uz',
+// 	setLanguage: i => set({ languagee: i }),
+// }))
+
+// export default useStore
