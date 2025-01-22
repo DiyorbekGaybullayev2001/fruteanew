@@ -1,14 +1,14 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import Nav from "./nav/Nav";
 import NavTop from "./nav/NavTop";
 import Footer from "./Footer";
 import My_orders from "./my_orders";
 import My_settings from "./my_settings";
+import useStore from '../store/teaStore'
 
 function Cabinet() {
-  // Qaysi sahifa faolligini saqlash uchun state
   const [activePage, setActivePage] = useState("my_orders");
+  const user = useStore(state => state.user); 
 
   return (
     <>
@@ -17,43 +17,37 @@ function Cabinet() {
 
       <div className="container m-auto  h-[600px]">
       <div className="mt-[40px]">
-        <span className="font-semibold text-[25px]">Diyorbek D</span>
+        <span className="font-semibold text-[25px]">{user?.firstName} {user.lastName}</span>
       </div>
       <div className="flex">
-        {/* Chap menyu */}
         <nav className="w-[30%] p-4">
           <ul>
             <li className="mb-4">
               <button
-                onClick={() => setActivePage("my_orders")} // Sahifani o'zgartirish
+                onClick={() => setActivePage("my_orders")} 
                 className={`block p-3 rounded ${
                   activePage === "my_orders" ? "bg-green-300" : "hover:bg-green-300"
-                }`}
-              >
+                }`}>
                 Buyurtmalarim
               </button>
             </li>
             <li className="mb-4">
               <button
-                onClick={() => setActivePage("my_settings")} // Sahifani o'zgartirish
+                onClick={() => setActivePage("my_settings")}
                 className={`block p-3 rounded ${
                   activePage === "my_settings" ? "bg-green-300" : "hover:bg-green-300"
-                }`}
-              >
-                Ma'lumotlarim
+                }`}>
+                Malumotlarim
               </button>
             </li>
           </ul>
         </nav>
-
-        {/* Asosiy kontent */}
         <div className="w-3/4 p-4 ">
-          {activePage === "my_orders" && <My_orders />} {/* Faol sahifa: Buyurtmalarim */}
-          {activePage === "my_settings" && <My_settings />} {/* Faol sahifa: Ma'lumotlarim */}
+          {activePage === "my_orders" && <My_orders />} 
+          {activePage === "my_settings" && <My_settings />}
         </div>
       </div>
       </div>
-
       <Footer />
     </>
   );
