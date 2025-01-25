@@ -2,7 +2,6 @@ import useStore from '../../store/teaStore'
 
 function Nav() {
 	const { setLanguage, setUser } = useStore(); 
-	const user = useStore(state => state.user); 
 	const languages = [
 	 { code: 'uz', flag: '🇺🇿' },
 	 { code: 'ru', flag: '🇷🇺' },
@@ -35,7 +34,6 @@ function Nav() {
 	  console.error('Error:', error);
 	 }
 	};
-	console.log(user);
 	
    
 	return (
