@@ -35,7 +35,7 @@ function Nav() {
 	  console.error('Error:', error);
 	 }
 	};
-	console.log(user);
+	// console.log(user);
 	
    
 	return (

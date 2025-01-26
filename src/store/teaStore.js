@@ -17,6 +17,19 @@ const useStore = create((set) => ({
 export default useStore;
 
 
+// bu fc userni yangilashga
+// const useStore = create((set) => ({
+//   user: {
+//     lastName: '',
+//     firstName: '',
+//     phone: '',
+//   },
+//   updateUser: (updatedUser) => set((state) => ({
+//     user: { ...state.user, ...updatedUser },
+//   })),
+// }));
+
+
 
 
 // import { create } from 'zustand'

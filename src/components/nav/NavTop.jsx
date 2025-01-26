@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 function NavTop() {
   const navigate = useNavigate();
   const [category, setCategory] = useState([]);
-
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -24,9 +23,14 @@ function NavTop() {
       .then((data) => setCategory(data?.data));
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    fetch(`https://api.fruteacorp.uz/products?search=${searchTerm}`, {
+  const handleSearch = (term) => {
+    if (!term.trim()) {
+      setSearchResults([]);
+      setErrorMessage('');
+      return;
+    }
+
+    fetch(`https://api.fruteacorp.uz/products?search=${term}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -46,15 +50,15 @@ function NavTop() {
 
   return (
     <div>
-      <div className='container'>
-        <div className='hidden lg:flex h-[40px] mt-[20px]'>
-          <div className='flex items-center gap-[25px] mr-[7px]'>
-            <a className='w-[250px] h-[40px] cursor-pointer' href='/'>
-              <img className='h-[40px]' src={logo} alt='logo' />
+      <div className="container">
+        <div className="hidden lg:flex h-[40px] mt-[20px]">
+          <div className="flex items-center gap-[25px] mr-[7px]">
+            <a className="w-[250px] h-[40px] cursor-pointer" href="/">
+              <img className="h-[40px]" src={logo} alt="logo" />
             </a>
-            <div className='relative h-full '>
+            <div className="relative h-full">
               <select
-                className='flex items-center transition-all duration-200 bg-green-200 hover:bg-green-400 px-[16px] h-full font-medium gap-2 text-[14px] rounded-[4px] text-black'
+                className="flex items-center transition-all duration-200 bg-green-200 hover:bg-green-400 px-[16px] h-full font-medium gap-2 text-[14px] rounded-[4px] text-black"
                 onChange={(e) => {
                   const selectedCategoryId = e.target.value;
                   if (selectedCategoryId) {
@@ -62,7 +66,7 @@ function NavTop() {
                   }
                 }}
               >
-                <option value=''>Katalog</option>
+                <option value="">Katalog</option>
                 {category?.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.title_uz}
@@ -72,34 +76,36 @@ function NavTop() {
             </div>
           </div>
 
-          <div className='w-full ml-[2px] relative'>
-            <form
-              className='w-full h-full flex justify-between border-solid border-green-200 border-[1px] border-[rgba(54, 55, 64, .2)] rounded-[4px]'
-              onSubmit={handleSearch}
+          <div className="w-full ml-[2px] relative">
+            <div
+              className="w-full h-full flex justify-between border-solid border-green-200 border-[1px] border-[rgba(54, 55, 64, .2)] rounded-[4px]"
             >
               <input
-                type='text'
-                className='pl-[16px] text-[14px] w-full focus:outline-none bg-transparent placeholder:text-custom-green-600'
-                placeholder='Search...'
+                type="text"
+                className="pl-[16px] text-[14px] w-full focus:outline-none bg-transparent placeholder:text-custom-green-600"
+                placeholder="Qidirish..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  handleSearch(e.target.value);
+                }}
               />
-              <button className='bg-[#daf9da] px-[32px] hover:bg-green-200' type='submit'>
+              <button className="bg-[#daf9da] px-[32px] hover:bg-green-200" type="button">
                 <IoIosSearch />
               </button>
-            </form>
+            </div>
             {errorMessage && (
-              <div className='absolute z-50 bg-red-100 text-red-600 w-full mt-2 p-2 rounded shadow'>
+              <div className="absolute z-50 bg-red-100 text-red-600 w-full mt-2 p-2 rounded shadow">
                 {errorMessage}
               </div>
             )}
             {searchResults.length > 0 && (
-              <div className='absolute z-50 bg-white shadow-lg w-full mt-2 rounded'>
+              <div className="absolute z-50 bg-white shadow-lg w-full mt-2 rounded">
                 <ul>
                   {searchResults.map((result) => (
                     <li
                       key={result.id}
-                      className='bg-slate-100 p-2 hover:bg-green-200 cursor-pointer'
+                      className="bg-slate-100 p-2 hover:bg-green-200 cursor-pointer"
                       onClick={() => navigate(`/product/${result.id}`)}
                     >
                       {result.title_uz}
@@ -110,30 +116,30 @@ function NavTop() {
             )}
           </div>
 
-          <div className='flex gap-[8px] items-center ml-[20px]'>
+          <div className="flex gap-[8px] items-center ml-[20px]">
             <a
-              href='/cabinet'
-              className='font-medium text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]'
+              href="/cabinet"
+              className="font-medium text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]"
             >
-              <button className='flex items-center gap-[10px] py-[10px]'>
-                <FaRegUser /> <span className='hidden xl:block'>Kabinet</span>
+              <button className="flex items-center gap-[10px] py-[10px]">
+                <FaRegUser /> <span className="hidden xl:block">Kabinet</span>
               </button>
             </a>
             <a
-              href='/wishes'
-              className='font-medium text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]'
+              href="/wishes"
+              className="font-medium text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]"
             >
-              <button className='flex items-center gap-[10px] py-[10px]'>
+              <button className="flex items-center gap-[10px] py-[10px]">
                 <GiSelfLove />
-                <span className='hidden xl:block'>Saralangan</span>
+                <span className="hidden xl:block">Saralangan</span>
               </button>
             </a>
             <a
-              href='/cart'
-              className='font-medium text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]'
+              href="/cart"
+              className="font-medium text-[14px] transition-all duration-200 hover:bg-green-200 rounded-[4px] px-[8px]"
             >
-              <button className='flex items-center gap-[10px] py-[10px]'>
-                <BsBagPlus /> <span className='hidden xl:block'>Savat</span>
+              <button className="flex items-center gap-[10px] py-[10px]">
+                <BsBagPlus /> <span className="hidden xl:block">Savat</span>
               </button>
             </a>
           </div>
