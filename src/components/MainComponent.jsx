@@ -54,25 +54,9 @@ function MainComponent() {
     { label: 'User', icon: <FaRegUser />, isButton: true },
   ]
 
-  // const fetchData = () => {
-  //   setLoading(true)
-  //   fetch(`https://api.fruteacorp.uz/products?page=1&limit=${limit}`, {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json' },
-  //   })
-  //     .then(res => res.json())
-  //     .then(elem => {
-  //       setData(elem)
-  //     })
-  //     .catch(err => {
-  //       console.error('Error fetching data:', err)
-  //     })
-  //     .finally(() => setLoading(false))
-  // }
-
   const fetchData = () => {
     setLoading(true)
-    fetch(`https://api.fruteacorp.uz/products?page=1&limit=${limit}`, {
+    fetch(`http://209.38.30.188:8347/products?page=1&limit=${limit}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -89,7 +73,7 @@ function MainComponent() {
       .finally(() => setLoading(false))
   }
   useEffect(() => {
-    fetch(`https://api.fruteacorp.uz/products?page=1&limit=20`, {
+    fetch(`http://209.38.30.188:8347/products?page=1&limit=20`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -137,9 +121,9 @@ function MainComponent() {
 
 
   const handleAddToCart = (productId, count) => {
-    const token = localStorage.getItem('accessToken');  // Tokenni olish
+    const token = localStorage.getItem('accessToken');  
     
-    fetch('https://api.fruteacorp.uz/cart/add', {
+    fetch('http://209.38.30.188:8347/cart/add', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',
@@ -421,7 +405,7 @@ function MainComponent() {
 						  <div className='mb-2 bg-[#efefef]'>
 							<img
 							  className='w-full object-contain border aspect-[4/5.25] max-h-[350px] block rounded-t-lg'
-							  src={`https://api.fruteacorp.uz/images/${imageItem.image.name}`}
+							  src={`http://209.38.30.188:8347/images/${imageItem.image.name}`}
 							  alt='img'
 							/>
 						  </div>

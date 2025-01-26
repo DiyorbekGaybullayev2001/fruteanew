@@ -24,7 +24,7 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 			const token = localStorage.getItem('accessToken')
 
 			try {
-				const response = await fetch('https://api.fruteacorp.uz/wishlist', {
+				const response = await fetch('http://209.38.30.188:8347/wishlist', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -54,43 +54,53 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 		}
 	}
 
-	const addToCart = async productId => {
-		setLoading(true)
-		const token = localStorage.getItem('accessToken')
+	const addToCart = async (productId) => {
+		setLoading(true);
+		const token = localStorage.getItem('accessToken');
+	  
 		if (!token) {
-			console.error('Token not found. Please log in.')
-			return
+		  console.error('Token not found. Please log in.');
+		  alert('Please log in to add items to your cart.');
+		  setLoading(false);
+		  return;
 		}
-
+	  
 		try {
-			const response = await fetch('https://api.fruteacorp.uz/cart/add', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify({ productId, count: 1 }),
-			})
-
-			if (!response.ok) {
-				const errorData = await response.json()
-				console.error(`Error: ${errorData.message}`)
-				return
+		  const response = await fetch('http://209.38.30.188:8347/cart/add', {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json',
+			  Authorization: `Bearer ${token}`, // Ensure token is included
+			},
+			body: JSON.stringify({ productId, count: 1 }),
+		  });
+	  
+		  if (!response.ok) {
+			const errorData = await response.json();
+			console.error(`Error: ${errorData.message}`);
+			if (response.status === 401) {
+			  alert('Your session has expired. Please log in again.');
+			} else {
+			  alert(`Error: ${errorData.message}`);
 			}
-
-			console.log('Product successfully added to cart.')
+			return;
+		  }
+	  
+		  console.log('Product successfully added to cart.');
 		} catch (error) {
-			console.error('Error adding product to cart:', error)
+		  console.error('Error adding product to cart:', error);
+		  alert('An error occurred. Please try again.');
 		} finally {
-			setLoading(false)
+		  setLoading(false);
 		}
-	}
+	  };
+	  
 
 	return (
 		<div className='grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 md:grid-cols-4 gap-x-3 gap-y-10 mb-5 sm:gap-x-5'>
 			{data?.data?.map(product => {
 				const imageUrl = product?.images?.[0]?.image?.name
-					? `https://api.fruteacorp.uz/images/${product.images[0].image.name}`
+					? `http://209.38.30.188:8347/images/${product.images[0].image.name}`
 					: 'https://via.placeholder.com/150'
 
 				const isLiked = likedProducts.includes(product.id)
@@ -101,7 +111,7 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 						className='max-w-[400px] relative border border-green-300 hover:shadow-[0px_0px_13px_rgba(72,239,128,0.5)] overflow-hidden rounded-[20px] flex flex-col pb-4'
 					>
 						<div className='relative bg-[#EFEFEF]'>
-							<Link to={`/product/${product.id}`}>
+							<Link to={`/product/${product.id}`} state={product}>
 							<img
 								src={imageUrl}
 								alt={getLocalizedTitle(product)}
@@ -117,7 +127,7 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 						</div>
 						<div className='p-3'>
 							<h3 className='text-[#1F2026] text-[10px] sm:text-[12.8px] h-16 font-semibold mb-1 text-left'>
-								{getLocalizedTitle(product)}
+								{getLocalizedTitle(product.title_uz)}
 								<div className='flex items-center gap-1 mt-1'>
 									<FaStar style={{ color: '#FFB54C' }} />
 									<h4 className='text-[#7E818C]'>5 (0 sharhlar)</h4>

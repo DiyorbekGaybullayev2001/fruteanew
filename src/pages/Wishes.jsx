@@ -25,7 +25,7 @@ const Wishes = () => {
 		}
 
 		try {
-			const response = await fetch('https://api.fruteacorp.uz/wishlist', {
+			const response = await fetch('http://209.38.30.188:8347/wishlist', {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const Wishes = () => {
 			}
 
 			try {
-				const response = await fetch('https://api.fruteacorp.uz/wishlist', {
+				const response = await fetch('http://209.38.30.188:8347/wishlist', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ const Wishes = () => {
 						{wishes.map(wish => {
 							const product = wish.Product
 							const imageUrl = product?.images?.[0]?.image?.name
-								? `https://api.fruteacorp.uz/images/${product.images[0].image.name}`
+								? `http://209.38.30.188:8347/images/${product.images[0].image.name}`
 								: 'https://via.placeholder.com/150'
 
 							return (
@@ -244,15 +244,15 @@ const Wishes = () => {
 
 				<h1 className='text-3xl mt-12 mb-8'>Mashhur</h1>
 
-				{popularProducts.length > 0 ? (
-					<All
-						data={popularProducts}
-						fetchWishlist={fetchWishlist}
-						getLocalizedTitle={product => product?.title_uz || 'No Title'}
-					/>
-				) : (
-					<p className='text-gray-500'>Hozircha mashhur mahsulotlar yo'q.</p>
-				)}
+                {
+	              popularProducts &&
+	              <All 
+		              data={popularProducts}
+		              fetchWishlist={fetchWishlist}
+		              getLocalizedTitle={product => product?.title_uz || 'No Title'}
+	              />
+                }
+
 			</div>
 		</>
 	)
