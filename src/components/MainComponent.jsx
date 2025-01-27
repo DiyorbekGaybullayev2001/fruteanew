@@ -171,6 +171,7 @@ function MainComponent() {
 	return (
 		<>
 			<header>
+				
 				<Nav />
 				<div className='block lg:hidden'>
 					<div className='fixed bottom-0 z-[99] py-[10px] w-full bg-white border-t border-t-[rgba(54, 55, 64, .8)]'>

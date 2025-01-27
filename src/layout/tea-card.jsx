@@ -14,7 +14,6 @@ import { ProductCard } from "../components/product-card";
         console.error("Error fetching products:", error);
       });
   }, []); 
-  console.log(products.data);
   
 
   return (
