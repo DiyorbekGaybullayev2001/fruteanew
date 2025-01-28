@@ -11,6 +11,7 @@ export const ProductCard = ({images, amount, title_uz}) => {
         <img className='w-[200px] h-[300px]' src={`https://api.fruteacorp.uz/images/${images[0].image.name}`} alt="img" />
         <h1>{title_uz}</h1>
         <span>{amount}</span>
+        
     </div>
   )
 }

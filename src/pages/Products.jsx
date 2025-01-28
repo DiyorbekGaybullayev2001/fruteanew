@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { ProductCard } from "../components/product-card";
 function Products() {
@@ -17,10 +18,15 @@ function Products() {
   
 
   return (
-    <div className="flex items-center flex-wrap justify-center gap-10 py-8">
+<>
+<div className="flex items-center flex-wrap justify-center gap-10 py-8">
+   
       
       {products?.data?.map((item) => <ProductCard key={item.id} {...item} /> )}
+     
+      
     </div>
+    </>
   );
 }
 
