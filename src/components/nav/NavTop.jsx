@@ -30,7 +30,7 @@ function NavTop() {
       return;
     }
 
-    fetch(`https://api.fruteacorp.uz/products?search=${term}`, {
+    fetch(`http://209.38.30.188:8347/products?search=${term}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' },
     })
