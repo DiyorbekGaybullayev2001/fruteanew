@@ -5,13 +5,15 @@ import NoData from './img/not-product-Bbj56LVh.png'
 import { Link } from 'react-router-dom'
 import Nav from '../components/nav/Nav'
 import NavTop from '../components/nav/NavTop'
+import Footer from '../components/Footer'
+import ProductSwip from '../components/products/All'
 function Cart() {
 	const [cartItems, setCartItems] = useState([])
 	const [loading, setLoading] = useState(true)
 
 	const fetchCart = async () => {
 		try {
-			const response = await fetch('https://api.fruteacorp.uz/cart', {
+			const response = await fetch('http://209.38.30.188:8347/cart', {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ function Cart() {
 
 	const handleAddToCart = async productId => {
 		try {
-			const response = await fetch('https://api.fruteacorp.uz/cart/add', {
+			const response = await fetch('http://209.38.30.188:8347/cart/add', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ function Cart() {
 
 	const handleRemoveAllFromCart = async productId => {
 		try {
-			const response = await fetch('https://api.fruteacorp.uz/cart/remove', {
+			const response = await fetch('http://209.38.30.188:8347/cart/remove', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -80,7 +82,7 @@ function Cart() {
 
 	const handleRemoveFromCart = async productId => {
 		try {
-			const response = await fetch('https://api.fruteacorp.uz/cart/remove', {
+			const response = await fetch('http://209.38.30.188:8347/cart/remove', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -132,7 +134,7 @@ function Cart() {
 								{cartItems.map(item => {
 									const product = item.Product
 									const imageUrl = product?.images?.[0]?.image?.name
-										? `https://api.fruteacorp.uz/images/${product.images[0].image.name}`
+										? `http://209.38.30.188:8347/images/${product.images[0].image.name}`
 										: 'https://via.placeholder.com/150'
 
 									const total = product.amount * item.quantity
@@ -254,6 +256,10 @@ function Cart() {
 						</div>
 					</div>
 				)}
+			</div>
+			<ProductSwip/>
+			<div className=' mt-28'>
+			<Footer/>
 			</div>
 		</>
 	)

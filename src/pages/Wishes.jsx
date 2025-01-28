@@ -9,6 +9,7 @@ import NoData from './img/not-product-Bbj56LVh.png'
 import NavTop from '../components/nav/NavTop'
 import Nav from '../components/nav/Nav'
 import All from '../components/products/All'
+import Footer from '../components/Footer'
 const Wishes = () => {
 	const [wishes, setWishes] = useState([])
 	const [popularProducts, setPopularProducts] = useState([])
@@ -253,6 +254,9 @@ const Wishes = () => {
 	              />
                 }
 
+			</div>
+			<div className=' mt-28'>
+			<Footer/>
 			</div>
 		</>
 	)
