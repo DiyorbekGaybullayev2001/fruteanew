@@ -5,7 +5,7 @@ function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.fruteacorp.uz/products")
+    fetch("http://209.38.30.188:8347/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

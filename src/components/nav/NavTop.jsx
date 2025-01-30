@@ -15,7 +15,7 @@ function NavTop() {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    fetch(`https://api.fruteacorp.uz/categories`, {
+    fetch(`http://209.38.30.188:8347/categories`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -24,6 +24,7 @@ function NavTop() {
   }, []);
 
   const handleSearch = (term) => {
+    // console.log(term);
     if (!term.trim()) {
       setSearchResults([]);
       setErrorMessage('');
@@ -37,6 +38,7 @@ function NavTop() {
       .then((res) => res.json())
       .then((data) => {
         const results = data?.data || [];
+        // console.log(data);
         if (results.length > 0) {
           setSearchResults(results);
           setErrorMessage('');

@@ -8,7 +8,7 @@ export const ProductCard = ({images, amount, title_uz}) => {
       <span className=' absolute right-10'>
         <GiSelfLove/>
       </span>
-        <img className='w-[200px] h-[300px]' src={`https://api.fruteacorp.uz/images/${images[0].image.name}`} alt="img" />
+        <img className='w-[200px] h-[300px]' src={`http://209.38.30.188:8347/images/${images[0].image.name}`} alt="img" />
         <h1>{title_uz}</h1>
         <span>{amount}</span>
         

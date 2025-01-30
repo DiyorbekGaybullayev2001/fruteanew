@@ -88,7 +88,7 @@ function MainComponent() {
   }, [])
 
   useEffect(() => {
-    fetch(`https://api.fruteacorp.uz/products/most-sold`, {
+    fetch(`http://209.38.30.188:8347/products/most-sold`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -103,7 +103,7 @@ function MainComponent() {
   }, [])
 
   useEffect(() => {
-    fetch(`https://api.fruteacorp.uz/banner`, {
+    fetch(`http://209.38.30.188:8347/banner`, {
       method: 'GEt',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -254,7 +254,7 @@ function MainComponent() {
                 <SwiperSlide className='border rounded-[20px]' key={index}>
                   <img
                     className='border rounded-[20px] w-full object-cover h-[160px] ss:h-[195px] sm:h-[210px] md:h-[260px] lg:h-[350px] xl:h-[415px]'
-                    src={`https://api.fruteacorp.uz/images/${item.image}`}
+                    src={`http://209.38.30.188:8347/images/${item.image}`}
                     alt={`Banner ${index + 1}`}
                   />
                 </SwiperSlide>
@@ -334,7 +334,7 @@ function MainComponent() {
                       <div className='mb-2 bg-[#efefef]'>
                         <img
                           className='w-full object-contain border aspect-[4/5.25] max-h-[350px] block rounded-t-lg'
-                          src={`https://api.fruteacorp.uz/images/${imageItem.image.name}`}
+                          src={`http://209.38.30.188:8347/images/${imageItem.image.name}`}
                           alt='img'
                         />
                       </div>

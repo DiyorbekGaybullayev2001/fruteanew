@@ -14,13 +14,14 @@ const SingleProduct = () => {
   const [language, setLanguage] = useState('uz');
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState(0);
+  // console.log(id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!product) {
       const fetchProduct = async () => {
         try {
-          const response = await fetch(`https://api.fruteacorp.uz/products/${id}`);
+          const response = await fetch(`https://209.38.30.188:8347/products/${id}`);
           if (!response.ok) {
             console.error(`Error: ${response.status} ${response.statusText}`);
             if (response.status === 400) {
@@ -34,7 +35,7 @@ const SingleProduct = () => {
             console.error('Invalid response format:', data);
           }
         } catch (error) {
-          console.error('Error fetching product:', error);
+          // console.error('Error fetching product:', error);
         }
       };
       fetchProduct();
@@ -57,7 +58,7 @@ const SingleProduct = () => {
  
   const imageUrl = product.images?.[0]?.image?.name
     ? `http://209.38.30.188:8347/images/${product.images[0].image.name}` 
-    : `https://api.fruteacorp.uz/images/${product.images[0].image.name}` 
+    : `http://209.38.30.188:8347/images/${product.images[0].image.name}` 
     
     
   const handleIncrease = () => {

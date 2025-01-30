@@ -127,7 +127,7 @@ const All = React.memo(({ data, getLocalizedTitle, fetchWishlist }) => {
 						</div>
 						<div className='p-3'>
 							<h3 className='text-[#1F2026] text-[10px] sm:text-[12.8px] h-16 font-semibold mb-1 text-left'>
-								{getLocalizedTitle(product.title_uz)}
+								{(product.title_uz)}
 								<div className='flex items-center gap-1 mt-1'>
 									<FaStar style={{ color: '#FFB54C' }} />
 									<h4 className='text-[#7E818C]'>5 (0 sharhlar)</h4>
